@@ -9,7 +9,10 @@ public class Main {
         //Instancias
         Heroe heroe1 = new Heroe("Alejandro");
         Enemigo enemigo1 =  new Enemigo("Jun");
+        Enemigo enemigo2 =  new Enemigo("Ronal");
+
 
         heroe1.realizarBatalla(enemigo1);
+        heroe1.realizarBatalla(enemigo2);
     }
 }

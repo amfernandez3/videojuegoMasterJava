@@ -82,19 +82,24 @@ public class Heroe extends Personaje implements Inventario{
             System.out.println("Ronda numero: " + turno);
             if(turno % 2 == 0){
                 enemigo.setVitalidad(enemigo.getVitalidad()- recibirDanho(enemigo));
+                System.out.println("Al enemigo le quedan " + enemigo.getVitalidad() + " pv.");
             }
             else {
-                realizarDanho(enemigo);
                 this.setVitalidad(this.getVitalidad()- realizarDanho(enemigo));
+                System.out.println("Te quedan " + this.getVitalidad() + " pv.");
             }
             turno += 1;
         }
 
         //Mensaje de batalla finalizada
         if(enemigo.getVitalidad()<= 0){
-            System.out.println("Has ganado la batalla!, ganas: " + enemigo.getNivel() + " puntos de experiencia");
+            System.out.println("Has ganado la batalla!, ganas: " + enemigo.getExperienciaAportada() + " puntos de experiencia");
             this.aumentarExperiencia(enemigo.getExperienciaAportada());
             numeroVictorias++;
+            System.out.println("********************************************");
+            System.out.println("En total han muerto: " + numeroVictorias + " enemigos.");
+            System.out.println("Experiencia: " +experienciaActual+ "/"+experienciaNecesaria);
+            System.out.println("********************************************");
         }
         else{
             System.out.println("Has perdido la batalla...");
@@ -116,7 +121,6 @@ public class Heroe extends Personaje implements Inventario{
             danho = 1;
         }
         System.out.println("El enemigo ha realizado: " + danho + " puntos de daño!");
-        System.out.println("Te quedan " + this.getVitalidad() + " pv.");
         return danho;
     }
 
@@ -133,8 +137,7 @@ public class Heroe extends Personaje implements Inventario{
         else {
             danho = 1;
         }
-        System.out.println("Al enemigo le quedan " + enemigo.getVitalidad() + " pv.");
-        System.out.println("Ha recibido: " + danho + " puntos de daño!");
+        System.out.println("El enemigo ha recibido: " + danho + " puntos de daño!");
 
 
         return danho;
