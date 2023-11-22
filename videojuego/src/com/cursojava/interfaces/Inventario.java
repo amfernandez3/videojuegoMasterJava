@@ -1,4 +1,6 @@
-package com.cursojava.models;
+package com.cursojava.interfaces;
+
+import com.cursojava.models.Objeto;
 
 /**
  * Interfaz que implementa el uso de un inventario.

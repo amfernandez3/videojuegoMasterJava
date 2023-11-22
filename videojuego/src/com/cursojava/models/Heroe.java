@@ -1,9 +1,11 @@
 package com.cursojava.models;
 
+import com.cursojava.interfaces.Inventario;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Heroe extends Personaje implements Inventario{
+public class Heroe extends Personaje implements Inventario {
     private List<Objeto> inventario;
 
     private static final int TAMANHO_INVENTARIO = 10;
@@ -79,10 +81,10 @@ public class Heroe extends Personaje implements Inventario{
         System.out.println("Se va a iniciar una batalla entre: " + this.getNombre() + " y "+ enemigo.getNombre());
         int turno = 0;
         while(enemigo.getVitalidad()>0 && this.getVitalidad()>0){
-            System.out.println("Ronda numero: " + turno);
+            System.out.println("-------------Ronda numero: " + turno);
             if(turno % 2 == 0){
-                enemigo.setVitalidad(enemigo.getVitalidad()- recibirDanho(enemigo));
                 System.out.println("Al enemigo le quedan " + enemigo.getVitalidad() + " pv.");
+                enemigo.setVitalidad(enemigo.getVitalidad()- recibirDanho(enemigo));
             }
             else {
                 this.setVitalidad(this.getVitalidad()- realizarDanho(enemigo));
@@ -152,6 +154,7 @@ public class Heroe extends Personaje implements Inventario{
         this.setAtaque(this.getAtaque()+2);
         this.setDefensa(this.getDefensa()+1);
         this.setNivel(this.getNivel()+1);
+        System.out.println("El héroe a subido de nivel! nuevo nivel: " + this.getNivel());
         actualizarExperienciaNecesaria();
     }
 
